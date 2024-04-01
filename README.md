@@ -23,43 +23,35 @@ The Gym Management System is a web application built using the Laravel framework
 
 ## Installation
 
-1. Clone the repository:
+Clone the repository:
+- git clone https://github.com/your_username/gym-management-system.git
 
-```bash
-git clone https://github.com/your_username/gym-management-system.git
+## Install dependencies:
+-composer install
+-npm install
 
-Install dependencies:
-bash
-Copy code
-composer install
-npm install
-Set up your environment variables:
-bash
-Copy code
-cp .env.example .env
-php artisan key:generate
-Configure your database settings in the .env file.
+## Set up your environment variables:
+-cp .env.example .env
+-php artisan key:generate
+-Configure your database settings in the .env file.
 
-Run migrations and seeders:
+## Run migrations and seeders:
+-php artisan migrate --seed
 
-bash
-Copy code
-php artisan migrate --seed
-Start the development server:
-bash
-Copy code
-php artisan serve
-Access the application at http://localhost:8000.
+## Start the development server:
+-php artisan serve
+-Access the application at http://localhost:8000.
 
-Usage
-Navigate to the landing page and register as a gym member.
-Use the provided unique code or QR scanner to check-in.
-Log in as an admin to access the dashboard and manage users, members, payments, and generate reports.
-Contributing
-Contributions are welcome! Please feel free to open a pull request or submit an issue for any improvements or features you'd like to add.
+## Usage
+-Navigate to the landing page and register as a gym member.
+-Use the provided unique code or QR scanner to check-in.
+-Log in as an admin to access the dashboard and manage users, members, payments, and generate reports.
 
-License
+## Contributing
+-Contributions are welcome! Please feel free to open a pull request or submit an issue for any improvements or features you'd like to add.
+
+## License
 This project is licensed under the MIT License.
 
-Contact
+## Contact
 For inquiries or collaborations, please contact jeromeporcado11@gmail.com.
