@@ -1,4 +1,4 @@
-<p align="center"><a href="#" target="_blank"><img src="project_image_url" width="400" alt="Project Logo"></a></p>
+
 
 ## Overview
 
