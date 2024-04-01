@@ -24,7 +24,7 @@ The Gym Management System is a web application built using the Laravel framework
 ## Installation
 
 Clone the repository:
-- git clone https://github.com/your_username/gym-management-system.git
+- git clone https://github.com/JeromeeDeveloper/gym-management-system.git
 
 ## Install dependencies:
 -composer install
