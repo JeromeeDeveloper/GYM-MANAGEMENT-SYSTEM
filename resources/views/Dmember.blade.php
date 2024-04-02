@@ -7,18 +7,19 @@
                 <h2>Gym Members Report</h2>
 
                 <div class="row mb-3">
-                    <div class="col-md-4">
+                    <div class="col-lg-4 col-md-12">
                         <canvas id="activeUsersChart" width="400" height="300"></canvas>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-lg-4 col-md-12">
                         <canvas id="expiredUsersChart" width="400" height="300"></canvas>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-lg-4 col-md-12">
                         <canvas id="cancelledUsersChart" width="400" height="300"></canvas>
                     </div>
                 </div>
 
-                <h4 class="mb-4">Payments</h4>
+
+                <h2 class="mb-4">Members</h2>
 
                 <div class="input-group">
                     <label for="filterType" class="mr-2 mt-1 font-weight-bold">Filter Type &nbsp; </label>
@@ -117,7 +118,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function() {
-     
+
             $('#filterType').change(function() {
                 var filterType = $(this).val();
                 var startDate = getStartDate(filterType);

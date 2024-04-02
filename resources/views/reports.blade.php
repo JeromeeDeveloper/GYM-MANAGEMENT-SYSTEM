@@ -42,7 +42,8 @@
     </div>
     <div class="card">
         <div class="card-body">
-            <table class="table">
+            <div class="table-responsive">
+                <table class="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">Gym Code</th>
@@ -63,6 +64,7 @@
                 </tbody>
 
             </table>
+        </div>
         </div>
     </div>
 

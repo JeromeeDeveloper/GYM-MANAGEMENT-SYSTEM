@@ -28,10 +28,10 @@
     <link rel="stylesheet" href="{{ asset('assets/assets2/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/assets2/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/assets2/css/magnific-popup.css') }}">
-    <!--        <link rel="stylesheet" href="{{ asset('assets/assets2/css/bootstrap-theme.min.css') }}">-->
+    {{-- <link rel="stylesheet" href="{{ asset('assets/assets2/css/bootstrap-theme.min.css') }}"> --}}
 
 
-    <!--For Plugins external css-->
+    {{-- <!--For Plugins external css--> --}}
     <link rel="stylesheet" href="{{ asset('assets/assets2/css/plugins.css') }}" />
 
     <!--Theme custom css -->
@@ -471,7 +471,7 @@
                 }
             }, 1000);
 
-            when the close button is clicked
+           // when the close button is clicked
             button.addEventListener('click', function() {
                 clearInterval(timerId);
                 closeCardOnClick(button, index);

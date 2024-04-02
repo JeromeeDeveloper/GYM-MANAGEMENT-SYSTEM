@@ -50,7 +50,7 @@ class CheckInsCrudController extends CrudController
             'name' => 'code',
             'label' => 'Gym Code',
             'entity' => 'member',
-            'attribute' => 'code', 
+            'attribute' => 'code',
         ]);
 
         CRUD::addColumn([

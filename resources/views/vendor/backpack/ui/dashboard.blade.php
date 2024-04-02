@@ -6,6 +6,8 @@
 
     $totalGcash = \App\Models\Payments::where('type', 'gcash')->sum('amount');
 
+    $totalAll = \App\Models\Payments::sum('amount');
+
     $totalMemberCount = \App\Models\Member::count();
 
     $maxMemberCount = 500;
@@ -13,12 +15,12 @@
     $memberProgress = $totalMemberCount != 0 ? ($totalMemberCount / $maxMemberCount) * 100 : 0;
 
     $totalMemberWidget = [
-        'type' => 'progress',
-        'class' => 'card text-white bg-warning mb-2 me-1',
+        'type' => 'progress_white',
+        'class' => 'card text-white bg-danger mb-2 me-1',
         'value' => $totalMemberCount,
         'description' => 'Registered Members',
         'progress' => $memberProgress,
-        'hint' => 'Total Members',
+        'hint' => 'More members needed to welcome to the gym',
     ];
     $activeMemberCountThisMonth = \App\Models\Membership::where('status', 'active')
         ->whereMonth('start_date', now()->month)
@@ -29,21 +31,21 @@
         $totalMemberCount != 0 ? ($activeMemberCountThisMonth / $totalMemberCount) * 100 : 0;
     $activeMemberWidgetThisMonth = [
         'type' => 'progress',
-        'class' => 'card text-white bg-info mb-2 me-1',
+        'class' => 'card text-white bg-warning mb-2 me-1',
         'value' => $activeMemberCountThisMonth,
         'description' => 'Active Members (This Month)',
         'progress' => $activeMemberProgressThisMonth,
-        'hint' => 'Total Active Members (This Month)',
+        'hint' => 'More members needed to keep active this month',
     ];
     $expiredMemberCount = \App\Models\Membership::where('status', 'expired')->count();
     $expiredMemberProgress = $totalMemberCount != 0 ? ($expiredMemberCount / $totalMemberCount) * 100 : 0;
     $expiredMemberWidget = [
         'type' => 'progress',
-        'class' => 'card text-white bg-danger mb-2 me-1',
+        'class' => 'card text-white bg-success mb-2 me-1',
         'value' => $expiredMemberCount,
         'description' => 'Expired Membership',
         'progress' => $expiredMemberProgress,
-        'hint' => 'Total Expired Members',
+        'hint' => 'More renewals needed to welcome back',
     ];
 @endphp
 
@@ -57,7 +59,7 @@
                             <h5 class="card-title">{{ $totalMemberWidget['description'] }}</h5>
                             <p class="card-text">{{ $totalMemberWidget['value'] }}</p>
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar"
+                                <div class="progress-bar bg-pink" role="progressbar"
                                     style="width: {{ $totalMemberWidget['progress'] }}%;"
                                     aria-valuenow="{{ $totalMemberWidget['progress'] }}" aria-valuemin="0"
                                     aria-valuemax="100"></div>
@@ -71,7 +73,7 @@
                             <h5 class="card-title">{{ $activeMemberWidgetThisMonth['description'] }}</h5>
                             <p class="card-text">{{ $activeMemberWidgetThisMonth['value'] }}</p>
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar"
+                                <div class="progress-bar bg-yellow" role="progressbar"
                                     style="width: {{ $activeMemberWidgetThisMonth['progress'] }}%;"
                                     aria-valuenow="{{ $activeMemberWidgetThisMonth['progress'] }}" aria-valuemin="0"
                                     aria-valuemax="100"></div>
@@ -85,7 +87,7 @@
                             <h5 class="card-title">{{ $expiredMemberWidget['description'] }}</h5>
                             <p class="card-text">{{ $expiredMemberWidget['value'] }}</p>
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar"
+                                <div class="progress-bar bg-success" role="progressbar"
                                     style="width: {{ $expiredMemberWidget['progress'] }}%;"
                                     aria-valuenow="{{ $expiredMemberWidget['progress'] }}" aria-valuemin="0"
                                     aria-valuemax="100"></div>
@@ -108,24 +110,29 @@
     <script>
         var totalCash = {{ $totalCash }};
         var totalGcash = {{ $totalGcash }};
-
-        // Bar Chart Data
+        var totalAll = {{ $totalAll }};
         var ctxB = document.getElementById("barChart").getContext('2d');
         var myBarChart = new Chart(ctxB, {
             type: 'bar',
             data: {
-                labels: ["Total Cash Income", "Total Gcash Income"],
+                labels: ["Total Cash Income", "Total Gcash Income", "Total All Income"],
                 datasets: [{
                     label: 'Total Cash Income',
-                    data: [totalCash, 0],
+                    data: [totalCash, 0, 0],
                     backgroundColor: 'rgba(255, 99, 132, 0.2)',
                     borderColor: 'rgba(255, 99, 132, 1)',
                     borderWidth: 1
                 }, {
                     label: 'Total Gcash Income',
-                    data: [0, totalGcash],
+                    data: [0, totalGcash, 0],
                     backgroundColor: 'rgba(54, 162, 235, 0.2)',
                     borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }, {
+                    label: 'Total All Income',
+                    data: [0, 0, totalAll],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
                     borderWidth: 1
                 }]
             },
@@ -140,4 +147,5 @@
             }
         });
     </script>
+
 @endpush
